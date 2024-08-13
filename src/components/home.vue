@@ -3,25 +3,26 @@ import { ref, onMounted, onUnmounted } from 'vue';
 
 const isVisible = ref(false);
 
-const handleScroll = () => {
-  const scrollPosition = window.scrollY;
-  const triggerPosition = 10; // 當滾動超過 10px 時觸發效果
-
-  if (scrollPosition > triggerPosition) {
+const handleWheel = (event) => {
+  // 檢查滾動方向，通常是垂直方向
+  if (event.deltaY > 0) {
+    // 向下滾動
     isVisible.value = true;
-  } else {
+  } else if (event.deltaY < 0) {
+    // 向上滾動
     isVisible.value = false;
   }
 };
 
 onMounted(() => {
-  window.addEventListener('scroll', handleScroll);
+  window.addEventListener('wheel', handleWheel);
 });
 
 onUnmounted(() => {
-  window.removeEventListener('scroll', handleScroll);
+  window.removeEventListener('wheel', handleWheel);
 });
 </script>
+
 
 <template>
     <p id="CKCSC">CKCSC</p>
@@ -40,6 +41,8 @@ body {
 }
 
 #th {
+    margin-top: -30%;
+    margin-bottom: 0%;
     font-size: 20rem;
     position: relative;
     transform: translateX(100%); /* 初始位置在螢幕外 */
