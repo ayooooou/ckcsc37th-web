@@ -4,22 +4,22 @@
 
 <template>
 <nav>
-    <div class="main-container">
+    <div class="main-container left-right">
         <div class="horizontal-item">CKCSC</div>
         <div class="horizontal-item">Computer Study Club</div>
 
         <div class="vertical-container">
-            <div class="vertical-item">Home</div>
-            <div class="vertical-item">About</div>
+            <div class="vertical-item"><a href="#">Home</a></div>
+            <div class="vertical-item"><a href="#about">About</a></div>
         </div>
         <div class="vertical-container">
-            <div class="vertical-item">Class</div>
-            <div class="vertical-item">IZCC</div>
+            <div class="vertical-item"><a>Class</a></div>
+            <div class="vertical-item"><a>IZCC</a></div>
         </div>
 
         <div class="vertical-container">
-            <div class="vertical-item">linktr.ee</div>
-            <div class="vertical-item">instergram</div>
+            <div class="vertical-item"><a>linktr.ee</a></div>
+            <div class="vertical-item"><a>instergram</a></div>
         </div>
         <div class="horizontal-item">Taipei, Taiwan</div>
     </div>
@@ -36,6 +36,26 @@ body{
     line-height: normal;
 }
 
+.left-right a{
+  position:relative;
+  color: #ffffff;
+  text-decoration:none;
+}
+.left-right a::after{
+  content:"";
+  display:block;
+  width: 0;
+  height: 2px;
+  background-color: #4bbcc2;
+  position:absolute;
+  right: 0;
+  transition:.4s;
+}
+.left-right a:hover::after{
+  width: 100%;
+  left: 0;
+}
+
 .main-container {
     display: flex;
     flex-wrap: nowrap;
@@ -47,7 +67,7 @@ body{
 }
 
 .horizontal-item:nth-child(2) {
-    margin-right: 40%;
+    margin-right: 35%;
 }
 
 /* 設置第一個垂直容器與其他內容之間的間距 */
