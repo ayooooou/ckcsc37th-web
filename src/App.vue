@@ -23,6 +23,7 @@ import home from './components/home.vue'
 <style>
 body{
   background-color: #000000;
+  overflow-y: hidden; /* 隱藏水平滾動條 */
 }
 
 </style>

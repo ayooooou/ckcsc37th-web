@@ -35,15 +35,16 @@ body {
 }
 
 #CKCSC {
-    margin-top: -5%;
+    margin: 0;
     font-size: 20rem;
-    position: relative; 
+    position: absolute; 
 }
 
 #th {
-    margin-top: -30%;
-    margin-bottom: 0%;
-    font-size: 20rem;
+    padding-top: 20%;
+    padding-bottom: 0%;
+    padding-left: 65%;
+    font-size: 10rem;
     position: relative;
     transform: translateX(100%); /* 初始位置在螢幕外 */
     opacity: 0; /* 初始完全隱藏 */
