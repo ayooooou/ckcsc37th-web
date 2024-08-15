@@ -39,8 +39,9 @@ body{
 }
 
 h1{
-        font-size: 5rem;
-        margin-top: 10%;
+    font-size: 3rem;
+    margin-top: 10%;
+    margin-left: 5%;
     }
 
 .scrollable-element {
@@ -52,6 +53,16 @@ h1{
 .scrollable-element::-webkit-scrollbar {
     width: 0px; /* 對於 Webkit 瀏覽器隱藏滾動條 */
 }
+@keyframes fadeIn{
+            0% {
+                opacity: 0.1;
+                transform: translateY(-30px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
 
 @media (max-width: 768px) {
     h1{

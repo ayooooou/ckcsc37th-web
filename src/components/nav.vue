@@ -18,8 +18,8 @@
         </div>
 
         <div class="vertical-container">
-            <div class="vertical-item"><a href="https://linktr.ee/ckcsc37th">linktr.ee</a></div>
-            <div class="vertical-item"><a href="https://www.instagram.com/ckcsc37th_diary/">instergram</a></div>
+            <div class="vertical-item"><a href="https://linktr.ee/ckcsc37th" target="_blank">linktr.ee</a></div>
+            <div class="vertical-item"><a href="https://www.instagram.com/ckcsc37th_diary/"  target="_blank">instergram</a></div>
         </div>
         <div class="horizontal-item">Taipei, Taiwan</div>
     </div>
@@ -33,6 +33,12 @@ body{
     font-weight: 400;
     line-height: normal;
 }
+
+nav{
+    opacity: 0; 
+    animation: fadeIn 0.5s ease-out forwards; 
+}
+
 
 .left-right a{
   position:relative;
@@ -65,7 +71,7 @@ body{
 }
 
 .horizontal-item:nth-child(2) {
-    margin-right: 35%;
+    margin-right: 34%;
 }
 
 /* 設置第一個垂直容器與其他內容之間的間距 */
@@ -83,7 +89,7 @@ body{
 
 @media (max-width: 768px) {
     body {
-        font-size: 0.4rem; /* 進一步縮小字體大小 */
+        font-size: 0.8rem; /* 進一步縮小字體大小 */
     }
     
     .main-container {

@@ -4,12 +4,12 @@ import { ref } from 'vue';
 const images = [
 {
     name: "網頁設計",
-    full: new URL('../assets/web_design.png', import.meta.url).href,
-    text: 'Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
+    full: new URL('../assets/class/web_design.png', import.meta.url).href,
+    text: 'html js css.'
   },
   {
     name: "Python",
-    full: new URL('../assets/python.jfif', import.meta.url).href,
+    full: new URL('../assets/class/python.jfif', import.meta.url).href,
     text: `Python是一款非常適合初學者的程式語言，
     因其語意簡單直白的特性，在行業中非常受歡迎，
     如現在最流行的AI，程式大部分都是由Python撰寫，
@@ -18,7 +18,7 @@ const images = [
   },
   {
     name: "演算法",
-    full: new URL('../assets/c.png', import.meta.url).href,
+    full: new URL('../assets/class/algorithm.png', import.meta.url).href,
     text: `這門課程將帶你深入理解核心的演算法與資料結構，從基礎到進階，涵蓋排序、遞迴、動態規劃等主題，以及圖論中的最短路徑、最小生成樹等技術，等更多進階主題。你將掌握解決複雜問題的能力，並為競賽與實際應用做好準備。<br>
 課程大綱
 
@@ -73,6 +73,7 @@ const current = ref(null);
 function showDetail(image) {
   current.value = image;
 }
+
 </script>
 
 
@@ -84,9 +85,10 @@ function showDetail(image) {
                 v-for="(image, index) in images" 
                 :key="index" 
                 :src="image.full" 
-                :alt="image.name" 
+                :alt="image.name"
+                class="class_img"
                 @click="showDetail(image)"
-    />
+        />
         </div>
 
         <div v-if="current">
@@ -98,9 +100,12 @@ function showDetail(image) {
     
 </template>
 
-<style>
-    
-    img{
+<style >
+h2{
+  margin:5% ;
+}  
+  
+    .class_img{
         width: 30%;
         height: 40%;
         margin: 2%;
@@ -122,7 +127,7 @@ function showDetail(image) {
         align-items: center;
     }
 
-    img:hover{
+    .class_img:hover{
         transform: scale(1.2) ;
     }
 
@@ -132,7 +137,7 @@ function showDetail(image) {
 }
 
 .accordion-item {
-  margin-bottom: 10px;
+  margin-bottom: -5%;
   display: flex;
   align-items: center;
   width: fit-content; /* 根據內容自適應寬度 */
@@ -146,8 +151,8 @@ function showDetail(image) {
 .accordion-item label {
   display: block;
   padding: 10px;
-  background-color: #4bbcc2f4;
-  border-radius:20%;
+  background-color: #6a6a6af4;
+  border-radius:10%;
   color: white;
   cursor: pointer;
   font-weight: bold;

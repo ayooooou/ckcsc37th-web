@@ -32,7 +32,10 @@ onMounted(() => {
 });
 
 const images = [
-  new URL('../assets/black_logo.png', import.meta.url).href,
+  new URL('../assets/logo/black.png', import.meta.url).href,
+  new URL('../assets/logo/blue.png', import.meta.url).href,
+  new URL('../assets/logo/orange.png', import.meta.url).href,
+  new URL('../assets/logo/red.png', import.meta.url).href,
 ];
 
 // 當前顯示的圖片
@@ -56,6 +59,7 @@ function changeImage() {
             id="logo"
             :src="currentImage"
             @mouseover="changeImage"
+            @click="changeImage"
             alt="Logo"
             />
             <p>{{ animatedText }}<span id="caret">&nbsp;</span></p>
@@ -66,17 +70,32 @@ function changeImage() {
 
 <style scoped>
     p{
-        font-size: 1.5rem;
+        font-size: 1rem;
         padding: 0 5%;
         overflow: hidden;
         animation: typing 10s steps(12)
     }
     
     #logo{
-        width: 30%;
-        height: 40%;
-        margin-left:0%;
-        transition: opacity 0.3s ease; /* 添加一個淡入淡出的效果 */
+        width: 20%;
+        height: 30%;
+        margin-left:10%;
+        margin-top: 5%;
+        border-radius: 100%;
+        transition: transform 0.5s ease; /* 設定動畫效果 */
+    }
+
+    #logo:hover{
+        animation: logo 0.5s;
+    }
+
+    @keyframes logo{
+      0%{
+        opacity: 0.1;
+      }
+      100%{
+        opacity: 1;
+      }
     }
 
     .container{
@@ -109,7 +128,7 @@ function changeImage() {
         height: 40%;
     }
     p{
-        font-size: 0.7rem;
+        font-size: 1rem;
         padding: 0 5%;
         overflow: hidden;
         animation: typing 3s steps(12)
