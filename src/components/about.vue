@@ -30,41 +30,58 @@ watch(animatedText, (newV) => {
 onMounted(() => {
   setTimeout(() => typeWriter(), 1000);
 });
+
+const images = [
+  new URL('../assets/black_logo.png', import.meta.url).href,
+];
+
+// 當前顯示的圖片
+const currentImage = ref(images[0]);
+
+let imageIndex = 0;
+
+// 切換到下一張圖片
+function changeImage() {
+  imageIndex = (imageIndex + 1) % images.length;
+  currentImage.value = images[imageIndex];
+}
 </script>
 
 
 <template>
     <section id="about">
-            <h1>關於我們</h1>
+        <h1>About</h1>
         <div class="container">
-            <img src="../assets/black_logo.png">
+            <img
+            id="logo"
+            :src="currentImage"
+            @mouseover="changeImage"
+            alt="Logo"
+            />
             <p>{{ animatedText }}<span id="caret">&nbsp;</span></p>
         </div>
     </section>
     
 </template>
 
-<style>
-    body{
-        font-family: "Noto Sans TC";
-    }
-    h1{
-        font-size: 5rem;
-    }
-    img{
-        width: 40%;
-        height: 40%;
-    }
+<style scoped>
     p{
         font-size: 1.5rem;
         padding: 0 5%;
         overflow: hidden;
-        animation: typing 3s steps(12)
+        animation: typing 10s steps(12)
+    }
+    
+    #logo{
+        width: 30%;
+        height: 40%;
+        margin-left:0%;
+        transition: opacity 0.3s ease; /* 添加一個淡入淡出的效果 */
     }
 
     .container{
         display: flex;
-        justify-content: center;
+        justify-content: left;
         align-items: center;
     }
     #caret {
@@ -80,6 +97,22 @@ onMounted(() => {
     }
     to {
         border-color: #4bbcc2;
+    }
+}
+
+@media (max-width: 768px) {
+  h1{
+        font-size: 2rem;
+    }
+    #logo{
+        width: 40%;
+        height: 40%;
+    }
+    p{
+        font-size: 0.7rem;
+        padding: 0 5%;
+        overflow: hidden;
+        animation: typing 3s steps(12)
     }
 }
     
