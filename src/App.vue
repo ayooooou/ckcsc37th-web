@@ -9,6 +9,22 @@ import class_components from './components/class.vue'
 import izcc_components from './components/IZCC.vue'
 import active_components from './components/active.vue'
 
+function isElementInViewport(el) {
+  const rect = el.getBoundingClientRect();
+  return rect.bottom < 0 || rect.top > window.innerHeight;
+}
+
+function addClassToVisibleElements() {
+  var aosElements = document.querySelectorAll(".aos");
+  aosElements.forEach(function (aosElement) {
+    if (!isElementInViewport(aosElement)) aosElement.classList.add("ed");
+    // else aosElement.classList.remove("ed");
+  });
+}
+
+document.addEventListener("scroll", addClassToVisibleElements);
+addClassToVisibleElements();
+
 </script>
 
 <template>
@@ -75,6 +91,18 @@ h1{
         overflow: hidden;
         animation: typing 3s steps(12);
     }
+}
+
+.aos {
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.aos.ed {
+  animation-name: fadeIn;
+  animation-duration: 0.5s;
+  animation-delay: 0.5s;
+  animation-fill-mode: forwards;
 }
 
 </style>

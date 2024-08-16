@@ -4,7 +4,7 @@
 
 
 <template>
-    <section id="izcc">
+    <section id="izcc" class="aos">
         <h1>IZCC</h1>
     <div class="container">
         <a href="https://www.instagram.com/zsisc._.31st/" target="_blank"><img id="zsisc" src="../assets/club/club-3.jpg"></a>

@@ -58,6 +58,9 @@ function move() {
 onMounted(() => {
   move();
 
+  box.value.onmouseenter = () => {
+    clearInterval(timer);
+  };
   box.value.onmouseleave = () => {
     move();
   };
@@ -74,7 +77,7 @@ function showName(image){
 </script>
 
 <template>
-<section id="active">
+<section id="active" class="aos">
     <div v-if="current">
         <h1>Active {{current.name}}</h1>
     </div>

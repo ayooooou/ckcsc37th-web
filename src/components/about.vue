@@ -2,7 +2,10 @@
 import { ref, watch, onMounted } from 'vue';
 
 // 宣告組件的數據和方法
-const sloganText = ref("「成功高中電子計算機研習社 Cheng Gong Computer Study Club」簡稱成功電研CKCSC，是一個成功高中內的學術性社團，在社課會教一些關於資訊領域的課程，會有學長帶你從零開始學，也會有進階班，歡迎學弟加入電研社的大家庭！ 除了教學課程，我們也與IZCC分別是建中資訊、中山資研、景美電資等三校，一同合辦許多活動與聯課，並且也會在放學後與四校共同開設課程，提供四校學弟妹與友校們交流的機會。");
+const sloganText = ref(`
+簡稱 :「 成功電研 CKCSC 」
+全名 :「 成功高中電子計算機研習社 Cheng Gong Computer Study Club 」
+介紹 : 我們是一個成功高中內的學術性社團，在社課會教一些關於資訊領域的課程，會有學長帶你從零開始學，也會有進階班，歡迎學弟加入電研社的大家庭！ 除了教學課程，我們也與IZCC分別是建中資訊、中山資研、景美電資等三校，一同合辦許多活動與聯課，並且也會在放學後與四校共同開設課程，提供四校學弟妹與友校們交流的機會。`);
 const animatedText = ref("");
 let i = ref(0);
 
@@ -32,8 +35,8 @@ onMounted(() => {
 });
 
 const images = [
-  new URL('../assets/logo/black.png', import.meta.url).href,
   new URL('../assets/logo/blue.png', import.meta.url).href,
+  new URL('../assets/logo/black.png', import.meta.url).href,
   new URL('../assets/logo/orange.png', import.meta.url).href,
   new URL('../assets/logo/red.png', import.meta.url).href,
 ];
@@ -52,7 +55,7 @@ function changeImage() {
 
 
 <template>
-    <section id="about">
+    <section id="about" class="aos">
         <h1>About</h1>
         <div class="container">
             <img
@@ -102,6 +105,9 @@ function changeImage() {
         display: flex;
         justify-content: left;
         align-items: center;
+        border: 3px solid #4bbcc2;
+        padding-bottom: 5%;
+        border-radius: 2%;
     }
     #caret {
         border-left: 5px solid #4bbcc2;
@@ -128,11 +134,12 @@ function changeImage() {
         height: 40%;
     }
     p{
-        font-size: 1rem;
+        font-size: 0.8rem;
         padding: 0 5%;
         overflow: hidden;
         animation: typing 3s steps(12)
     }
 }
-    
+
+
 </style>
