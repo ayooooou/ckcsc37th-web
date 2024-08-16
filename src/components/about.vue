@@ -76,7 +76,7 @@ function changeImage() {
         font-size: 1rem;
         padding: 0 5%;
         overflow: hidden;
-        animation: typing 10s steps(12)
+        animation: typing 20s steps(12)
     }
     
     #logo{
@@ -131,13 +131,17 @@ function changeImage() {
     }
     #logo{
         width: 40%;
-        height: 40%;
+        height: 30%;
     }
     p{
         font-size: 0.8rem;
         padding: 0 5%;
         overflow: hidden;
         animation: typing 3s steps(12)
+    }
+
+    .container{
+        height: 500px;
     }
 }
 

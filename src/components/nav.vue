@@ -71,7 +71,7 @@ nav{
 }
 
 .horizontal-item:nth-child(2) {
-    margin-right: 34%;
+    margin-right: 30%;
 }
 
 /* 設置第一個垂直容器與其他內容之間的間距 */

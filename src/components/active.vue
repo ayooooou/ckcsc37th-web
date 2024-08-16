@@ -77,14 +77,14 @@ function showName(image){
 </script>
 
 <template>
-<section id="active" class="aos">
+<section id="active">
     <div v-if="current">
         <h1>Active {{current.name}}</h1>
     </div>
-    <div v-else>
+    <div v-else  class="aos">
         <h1>Active</h1>
     </div>
-    <div class="box" ref="box">
+    <div class="box aos" ref="box">
       <div class="list" ref="list">
         <img
             v-for="(image, index) in images" 

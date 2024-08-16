@@ -20,6 +20,11 @@ function addClassToVisibleElements() {
     if (!isElementInViewport(aosElement)) aosElement.classList.add("ed");
     // else aosElement.classList.remove("ed");
   });
+  var bounceElements = document.querySelectorAll(".bounce");
+  bounceElements.forEach(function (bounceElement) {
+    if (!isElementInViewport(bounceElement)) bounceElement.classList.add("ed");
+    // else bounceElement.classList.remove("ed");
+  });
 }
 
 document.addEventListener("scroll", addClassToVisibleElements);
@@ -60,26 +65,6 @@ h1{
     margin-left: 5%;
     }
 
-.scrollable-element {
-    height: 100vh; /* 設置容器高度 */
-    overflow-y: scroll; /* 仍然可以滾動 */
-    scrollbar-width: none; /* 對於 Firefox 隱藏滾動條 */
-}
-
-.scrollable-element::-webkit-scrollbar {
-    width: 0px; /* 對於 Webkit 瀏覽器隱藏滾動條 */
-}
-@keyframes fadeIn{
-            0% {
-                opacity: 0.1;
-                transform: translateY(-30px);
-            }
-            100% {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
 @media (max-width: 768px) {
     h1{
         font-size: 2rem;
@@ -93,13 +78,49 @@ h1{
     }
 }
 
+
+@keyframes fadeIn{
+            0% {
+                opacity: 0.1;
+                transform: translateY(-30px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+@keyframes bounce-in {
+  0% {
+    transform: scale(0);
+  }
+  50% {
+    transform: scale(1.25);
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
 .aos {
   opacity: 0;
-  transition: opacity 0.3s;
+  transition: fadeIn 0.3s;
 }
 
 .aos.ed {
   animation-name: fadeIn;
+  animation-duration: 0.5s;
+  animation-delay: 0.5s;
+  animation-fill-mode: forwards;
+}
+
+.bounce{
+  opacity: 0;
+  transition: bounce-in 0.3s;
+}
+.bounce.ed{
+  animation-name: bounce-in;
   animation-duration: 0.5s;
   animation-delay: 0.5s;
   animation-fill-mode: forwards;

@@ -4,15 +4,15 @@
 
 
 <template>
-    <section id="izcc" class="aos">
+    <section id="izcc">
         <h1>IZCC</h1>
     <div class="container">
-        <a href="https://www.instagram.com/zsisc._.31st/" target="_blank"><img id="zsisc" src="../assets/club/club-3.jpg"></a>
+        <a  class="bounce" href="https://www.instagram.com/zsisc._.31st/" target="_blank"><img id="zsisc" src="../assets/club/club-3.jpg"></a>
     <div class="row">
-        <a href="https://www.instagram.com/infor_37th/" target="_blank"><img id="infor" src="../assets/club/club-1.jpg"></a>
-        <a href="https://www.instagram.com/ckcsc37th_diary/" target="_blank"><img id="ckcsc" src="../assets/club/club-2.jpg"></a>
+        <a  class="bounce" href="https://www.instagram.com/infor_37th/" target="_blank"><img id="infor" src="../assets/club/club-1.jpg"></a>
+        <a  class="bounce" href="https://www.instagram.com/ckcsc37th_diary/" target="_blank"><img id="ckcsc" src="../assets/club/club-2.jpg"></a>
     </div>
-    <a href="https://www.instagram.com/cmioc_31st/" target="_blank"><img id="cmioc" src="../assets/club/club-4.jpg"></a>
+    <a  class="bounce" href="https://www.instagram.com/cmioc_31st/" target="_blank"><img id="cmioc" src="../assets/club/club-4.jpg"></a>
     </div>
 
     </section>

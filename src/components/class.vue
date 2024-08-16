@@ -5,8 +5,8 @@ const images = [
 {
     name: "網頁設計",
     full: new URL('../assets/class/web_design.png', import.meta.url).href,
-    text: `這門課會帶你從0開始一步一步帶著你寫出一個有美感網頁 ! 我們會使用到的有HTML、CSS、JavaScript。這堂課會從最基礎最基礎的開始，沒有任何程式背景也可以來學 !
-這堂課最一開始會帶你學習HTML，HTML是網頁的骨架，會先帶著你學習如何使用html寫出最基礎的網頁，再來會帶你使用CSS來美化你的網頁，讓網頁瞬間升級 ! 最後教你用JavaScript讓網頁可以動起來，且在課程中都會搭配著小實作，讓大家更加熟悉學習到的東西。
+    text: `這門課會帶你從0開始一步一步帶著你寫出一個有美感網頁 ! 我們會使用到的有HTML、CSS、JavaScript。這堂課會從最基礎最基礎的開始，沒有任何程式背景也可以來學 !<br>
+這堂課最一開始會帶你學習HTML，HTML是網頁的骨架，會先帶著你學習如何使用html寫出最基礎的網頁，再來會帶你使用CSS來美化你的網頁，讓網頁瞬間升級 ! 最後教你用JavaScript讓網頁可以動起來，且在課程中都會搭配著小實作，讓大家更加熟悉學習到的東西。<br>
 課程最後的最後會讓大家自己設計一個網頁，大家可以在課程的最後創造出屬於自己的網頁 !`
   },
   {
@@ -79,13 +79,15 @@ function showDetail(image) {
                 :alt="image.name"
                 class="class_img"
                 @click="showDetail(image)"
-        />
+            />
         </div>
 
+        <Transition name="class_text">
         <div v-if="current">
             <h2>{{current.name}}</h2>
             <p v-html="current.text"></p>
         </div>
+        </Transition>
 
     </section>
     
@@ -121,6 +123,16 @@ h2{
     .class_img:hover{
         transform: scale(1.2) ;
     }
+
+.class_text-enter-active,
+.class_text-leave-active {
+  transition: opacity 0.5s ease;
+}
+
+.class_text-enter-from,
+.class_text-leave-to {
+  opacity: 0;
+}
 
 /* From Uiverse.io by eslam-hany */ 
 .book {
