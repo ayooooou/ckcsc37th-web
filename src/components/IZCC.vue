@@ -4,8 +4,8 @@
 
 
 <template>
-    <section id="izcc">
-        <h1>IZCC</h1>
+    <section id="izcc" >
+        <h1 class="aos">IZCC</h1>
     <div class="container">
         <a  class="bounce" href="https://www.instagram.com/zsisc._.31st/" target="_blank"><img id="zsisc" src="../assets/club/club-3.jpg"></a>
     <div class="row">

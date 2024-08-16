@@ -1,35 +1,40 @@
 <script setup>
-// This starter template is using Vue 3 <script setup> SFCs
-// Check out https://vuejs.org/api/sfc-script-setup.html#script-setup
-
 import nav_components from './components/nav.vue'
 import home_components from './components/home.vue'
 import about_components from './components/About.vue'
 import class_components from './components/class.vue'
 import izcc_components from './components/IZCC.vue'
 import active_components from './components/active.vue'
+import footer_components from './components/footer.vue'
 
+// 動畫
 function isElementInViewport(el) {
   const rect = el.getBoundingClientRect();
   return rect.bottom < 0 || rect.top > window.innerHeight;
 }
-
 function addClassToVisibleElements() {
   var aosElements = document.querySelectorAll(".aos");
   aosElements.forEach(function (aosElement) {
     if (!isElementInViewport(aosElement)) aosElement.classList.add("ed");
-    // else aosElement.classList.remove("ed");
+    // else aosElement.classList.remove("ed"); 移開後要不要再隱藏
   });
   var bounceElements = document.querySelectorAll(".bounce");
   bounceElements.forEach(function (bounceElement) {
     if (!isElementInViewport(bounceElement)) bounceElement.classList.add("ed");
-    // else bounceElement.classList.remove("ed");
+    // else bounceElement.classList.remove("ed"); 
   });
 }
-
 document.addEventListener("scroll", addClassToVisibleElements);
 addClassToVisibleElements();
 
+// 載入後再顯示
+window.addEventListener("load", (event) => {
+  const allBodyElements = document.body.querySelectorAll("*");
+  allBodyElements.forEach((element) => {
+    element.style.visibility = "visible";
+  });
+  addClassToVisibleElements();
+});
 </script>
 
 <template>
@@ -48,15 +53,19 @@ addClassToVisibleElements();
     <class_components/>
     <izcc_components/>
     <active_components/>
+    <footer_components />
   </body>
 </template>
 
 <style>
+
+
 body{
   background-color: #000000;
   font-family: "Sarpanch","Noto Sans TC";
   overflow-x: hidden; /* 隱藏水平滾動條 */
   color: #ffffff;
+  visibility: hidden; 
 }
 
 h1{
@@ -119,11 +128,27 @@ h1{
   opacity: 0;
   transition: bounce-in 0.3s;
 }
+
 .bounce.ed{
   animation-name: bounce-in;
   animation-duration: 0.5s;
   animation-delay: 0.5s;
   animation-fill-mode: forwards;
 }
+/* 
+html {
+    overflow: -moz-hidden-unscrollable;
+    height: 100%;
+}
 
+body::-webkit-scrollbar {
+    display: none;
+}
+
+body {
+    -ms-overflow-style: none;
+    height: 100%;
+	width: calc(100vw + 18px);
+	overflow: auto;
+} */
 </style>

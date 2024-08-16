@@ -58,8 +58,6 @@
   }
 }
 
-@import url(https://fonts.googleapis.com/css?family=Open+Sans:800);
-
 .text {
   fill: none;
   stroke-width: 6;

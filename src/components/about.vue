@@ -3,8 +3,8 @@ import { ref, watch, onMounted } from 'vue';
 
 // 宣告組件的數據和方法
 const sloganText = ref(`
-簡稱 :「 成功電研 CKCSC 」
-全名 :「 成功高中電子計算機研習社 Cheng Gong Computer Study Club 」
+簡稱 : 成功電研 CKCSC 
+全名 : 成功高中電子計算機研習社 Cheng Gong Computer Study Club 
 介紹 : 我們是一個成功高中內的學術性社團，在社課會教一些關於資訊領域的課程，會有學長帶你從零開始學，也會有進階班，歡迎學弟加入電研社的大家庭！ 除了教學課程，我們也與IZCC分別是建中資訊、中山資研、景美電資等三校，一同合辦許多活動與聯課，並且也會在放學後與四校共同開設課程，提供四校學弟妹與友校們交流的機會。`);
 const animatedText = ref("");
 let i = ref(0);
@@ -41,15 +41,29 @@ const images = [
   new URL('../assets/logo/red.png', import.meta.url).href,
 ];
 
+const colors = [
+  "#4bbcc2",
+  "#ffffff",
+  "#ff7f50",
+  "#ff0000",
+];
+
 // 當前顯示的圖片
 const currentImage = ref(images[0]);
+const currentcolor = ref(colors[0]);
 
 let imageIndex = 0;
+let colorIndex = 0;
 
 // 切換到下一張圖片
 function changeImage() {
   imageIndex = (imageIndex + 1) % images.length;
   currentImage.value = images[imageIndex];
+}
+
+function changecolor() {
+  colorIndex = (colorIndex + 1) % colors.length;
+  currentcolor.value = colors[colorIndex];
 }
 </script>
 
@@ -57,12 +71,12 @@ function changeImage() {
 <template>
     <section id="about" class="aos">
         <h1>About</h1>
-        <div class="container">
+        <div class="container" :style="{ borderColor: currentcolor }">
             <img
             id="logo"
             :src="currentImage"
-            @mouseover="changeImage"
-            @click="changeImage"
+            @mouseover="() => { changeImage(); changecolor(); }"
+           @click="() => { changeImage(); changecolor(); }"
             alt="Logo"
             />
             <p>{{ animatedText }}<span id="caret">&nbsp;</span></p>
@@ -105,10 +119,14 @@ function changeImage() {
         display: flex;
         justify-content: left;
         align-items: center;
-        border: 3px solid #4bbcc2;
+        border: 3px solid;
         padding-bottom: 5%;
         border-radius: 2%;
+        margin-left: 5%;
+        margin-right: 5%;
+        transition: transform 0.5s ease; /* 設定動畫效果 */
     }
+    
     #caret {
         border-left: 5px solid #4bbcc2;
         margin-left: 3px;
@@ -130,8 +148,8 @@ function changeImage() {
         font-size: 2rem;
     }
     #logo{
-        width: 40%;
-        height: 30%;
+        width: 100px;
+        height: 100px;
     }
     p{
         font-size: 0.8rem;
