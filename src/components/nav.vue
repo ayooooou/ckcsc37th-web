@@ -19,7 +19,7 @@
 
         <div class="vertical-container">
             <div class="vertical-item"><a href="https://linktr.ee/ckcsc37th" target="_blank">linktr.ee</a></div>
-            <div class="vertical-item"><a href="https://www.instagram.com/ckcsc37th_diary/"  target="_blank">instergram</a></div>
+            <div class="vertical-item"><a href="https://www.instagram.com/ckcsc37th_diary/"  target="_blank">instagram</a></div>
         </div>
         <div class="horizontal-item">Taipei, Taiwan</div>
     </div>
@@ -106,7 +106,7 @@ nav{
     }
 
     .vertical-container:nth-child(5) {
-        margin-right: 5%; 
+        margin-right: 10%; 
     }   
 }
 

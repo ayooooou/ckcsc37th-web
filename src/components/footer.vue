@@ -8,7 +8,7 @@
         <div class="main-container left-right aos">
         <div class="horizontal-item" >©CKCSC 37th</div>
         <div class="horizontal-item"><a href="https://linktr.ee/ckcsc37th" target="_blank">linktr.ee</a></div>
-        <div class="horizontal-item"><a href="https://www.instagram.com/ckcsc37th_diary/"  target="_blank">instergram</a></div>
+        <div class="horizontal-item"><a href="https://www.instagram.com/ckcsc37th_diary/"  target="_blank">instagram</a></div>
     </div>
     </footer>   
 </template>

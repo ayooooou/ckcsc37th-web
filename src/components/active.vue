@@ -79,7 +79,7 @@ function showName(image){
 <template>
 <section id="active">
     <div v-if="current">
-        <h1>Active {{current.name}}</h1>
+        <h1>Activity {{current.name}}</h1>
     </div>
     <div v-else  class="aos">
         <h1>Active</h1>
