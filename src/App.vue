@@ -1,4 +1,6 @@
 <script setup>
+import loading_components from './components/loading.vue'
+import animation_components from './components/animation.vue'
 import nav_components from './components/nav.vue'
 import home_components from './components/home.vue'
 import about_components from './components/About.vue'
@@ -6,35 +8,6 @@ import class_components from './components/class.vue'
 import izcc_components from './components/IZCC.vue'
 import active_components from './components/active.vue'
 import footer_components from './components/footer.vue'
-
-// 動畫
-function isElementInViewport(el) {
-  const rect = el.getBoundingClientRect();
-  return rect.bottom < 0 || rect.top > window.innerHeight;
-}
-function addClassToVisibleElements() {
-  var aosElements = document.querySelectorAll(".aos");
-  aosElements.forEach(function (aosElement) {
-    if (!isElementInViewport(aosElement)) aosElement.classList.add("ed");
-    // else aosElement.classList.remove("ed"); 移開後要不要再隱藏
-  });
-  var bounceElements = document.querySelectorAll(".bounce");
-  bounceElements.forEach(function (bounceElement) {
-    if (!isElementInViewport(bounceElement)) bounceElement.classList.add("ed");
-    // else bounceElement.classList.remove("ed"); 
-  });
-}
-document.addEventListener("scroll", addClassToVisibleElements);
-addClassToVisibleElements();
-
-// 載入後再顯示
-window.addEventListener("load", (event) => {
-  const allBodyElements = document.body.querySelectorAll("*");
-  allBodyElements.forEach((element) => {
-    element.style.visibility = "visible";
-  });
-  addClassToVisibleElements();
-});
 </script>
 
 <template>
@@ -47,6 +20,8 @@ window.addEventListener("load", (event) => {
     <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+JP&family=Noto+Sans+TC:wght@100..900&family=Sarpanch:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
   </head>
   <body>
+    <loading_components/>
+    <animation_components/>
     <nav_components/>
     <home_components/>
     <about_components/>
@@ -58,8 +33,6 @@ window.addEventListener("load", (event) => {
 </template>
 
 <style>
-
-
 body{
   background-color: #000000;
   font-family: "Sarpanch","Noto Sans TC";
@@ -87,54 +60,6 @@ h1{
     }
 }
 
-
-@keyframes fadeIn{
-            0% {
-                opacity: 0.1;
-                transform: translateY(-30px);
-            }
-            100% {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-@keyframes bounce-in {
-  0% {
-    transform: scale(0);
-  }
-  50% {
-    transform: scale(1.25);
-  }
-  100% {
-    transform: scale(1);
-    opacity: 1;
-  }
-}
-
-.aos {
-  opacity: 0;
-  transition: fadeIn 0.3s;
-}
-
-.aos.ed {
-  animation-name: fadeIn;
-  animation-duration: 0.5s;
-  animation-delay: 0.5s;
-  animation-fill-mode: forwards;
-}
-
-.bounce{
-  opacity: 0;
-  transition: bounce-in 0.3s;
-}
-
-.bounce.ed{
-  animation-name: bounce-in;
-  animation-duration: 0.5s;
-  animation-delay: 0.5s;
-  animation-fill-mode: forwards;
-}
 /* 
 html {
     overflow: -moz-hidden-unscrollable;
