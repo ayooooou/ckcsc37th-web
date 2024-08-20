@@ -1,7 +1,6 @@
 <script setup>
 import { ref, watch, onMounted } from 'vue';
 
-// 宣告組件的數據和方法
 const sloganText = ref(`
 簡稱 : 成功電研 CKCSC 
 全名 : 成功高中電子計算機研習社 Cheng Gong Computer Study Club 
@@ -18,7 +17,6 @@ const typeWriter = () => {
   }
 };
 
-// 監聽 animatedText 的變化
 watch(animatedText, (newV) => {
   if (newV === sloganText.value) {
     setTimeout(() => {
@@ -29,7 +27,6 @@ watch(animatedText, (newV) => {
   }
 });
 
-// 當組件掛載時開始動畫
 onMounted(() => {
   setTimeout(() => typeWriter(), 1000);
 });
@@ -48,14 +45,12 @@ const colors = [
   "#ff0000",
 ];
 
-// 當前顯示的圖片
 const currentImage = ref(images[0]);
 const currentcolor = ref(colors[0]);
 
 let imageIndex = 0;
 let colorIndex = 0;
 
-// 切換到下一張圖片
 function changeImage() {
   imageIndex = (imageIndex + 1) % images.length;
   currentImage.value = images[imageIndex];
@@ -66,7 +61,6 @@ function changecolor() {
   currentcolor.value = colors[colorIndex];
 }
 </script>
-
 
 <template>
     <section id="about" class="aos">
@@ -82,59 +76,58 @@ function changecolor() {
             <p>{{ animatedText }}<span id="caret">&nbsp;</span></p>
         </div>
     </section>
-    
 </template>
 
 <style scoped>
-    p{
-        font-size: 1rem;
-        padding: 0 5%;
-        overflow: hidden;
-        animation: typing 20s steps(12)
-    }
-    
-    #logo{
-        width: 20%;
-        height: 30%;
-        margin-left:10%;
-        margin-top: 5%;
-        border-radius: 100%;
-        transition: transform 0.5s ease; /* 設定動畫效果 */
-    }
+p {
+    font-size: 1rem;
+    padding: 0 5%;
+    overflow: hidden;
+    animation: typing 20s steps(12);
+}
 
-    #logo:hover{
-        animation: logo 0.5s;
-    }
+#logo {
+    width: 20%;
+    height: 30%;
+    margin-left: 10%;
+    margin-top: 5%;
+    border-radius: 100%;
+    transition: transform 0.5s ease;
+}
 
-    @keyframes logo{
-      0%{
+#logo:hover {
+    animation: logo 0.5s;
+}
+
+@keyframes logo {
+    0% {
         opacity: 0.1;
-      }
-      100%{
+    }
+    100% {
         opacity: 1;
-      }
     }
+}
 
-    .container{
-        display: flex;
-        justify-content: left;
-        align-items: center;
-        border: 3px solid;
-        padding-bottom: 5%;
-        border-radius: 2%;
-        margin-left: 5%;
-        margin-right: 5%;
-        transition: transform 0.5s ease; /* 設定動畫效果 */
-    }
-    
-    #caret {
-        border-left: 5px solid #4bbcc2;
-        margin-left: 3px;
-        animation: blink-caret 1s infinite;
-    }
+.container {
+    display: flex;
+    flex-direction: row; /* 使用row排列 */
+    justify-content: left;
+    align-items: center;
+    border: 3px solid;
+    padding-bottom: 5%;
+    border-radius: 2%;
+    margin-left: 5%;
+    margin-right: 5%;
+    transition: transform 0.5s ease;
+}
 
+#caret {
+    border-left: 5px solid #4bbcc2;
+    margin-left: 3px;
+    animation: blink-caret 1s infinite;
+}
 
-    @keyframes blink-caret {
+@keyframes blink-caret {
     from {
         border-color: transparent;
     }
@@ -144,24 +137,27 @@ function changecolor() {
 }
 
 @media (max-width: 768px) {
-  h1{
+    h1 {
         font-size: 2rem;
     }
-    #logo{
+    
+    #logo {
         width: 100px;
         height: 100px;
+        margin-left: 0;
+        margin-top: 20%;
     }
-    p{
+    
+    p {
         font-size: 0.8rem;
         padding: 0 5%;
         overflow: hidden;
-        animation: typing 3s steps(12)
+        animation: typing 3s steps(12);
     }
 
-    .container{
+    .container {
+        flex-direction: column; /* 在手機版中使用column排列 */
         height: 500px;
     }
 }
-
-
 </style>

@@ -7,38 +7,14 @@ let timer = null;
 let left = ref(0);
 
 const images = [
-  {
-    name: "暑訓",
-    full: new URL('../assets/active/20240811_205542.jpg', import.meta.url).href,
-  },
-  {
-    name: "迎新",
-    full: new URL('../assets/active/IMG_4404.jpg', import.meta.url).href,
-  },
-  {
-    name: "秋遊",
-    full: new URL('../assets/active/IMG_2344.jpg', import.meta.url).href,
-  },
-  {
-    name: "耶晚",
-    full: new URL('../assets/active/IMG_20231224_190319.jpg', import.meta.url).href,
-  },
-  {
-    name: "寒訓",
-    full: new URL('../assets/active/IMG_6764.jpg', import.meta.url).href,
-  },
-  {
-    name: "春遊",
-    full: new URL('../assets/active/IMG_1357.png', import.meta.url).href,
-  },
-  {
-    name: "企業參訪",
-    full: new URL('../assets/active/DSC01405.JPG', import.meta.url).href,
-  },
-  {
-    name: "放課",
-    full: new URL('../assets/active/IMG_0441.jpg', import.meta.url).href,
-  },
+  { name: "暑訓", full: new URL('../assets/active/20240811_205542.jpg', import.meta.url).href },
+  { name: "迎新", full: new URL('../assets/active/IMG_4404.jpg', import.meta.url).href },
+  { name: "秋遊", full: new URL('../assets/active/IMG_2344.jpg', import.meta.url).href },
+  { name: "耶晚", full: new URL('../assets/active/IMG_20231224_190319.jpg', import.meta.url).href },
+  { name: "寒訓", full: new URL('../assets/active/IMG_6764.jpg', import.meta.url).href },
+  { name: "春遊", full: new URL('../assets/active/IMG_1357.png', import.meta.url).href },
+  { name: "企業參訪", full: new URL('../assets/active/DSC01405.JPG', import.meta.url).href },
+  { name: "放課", full: new URL('../assets/active/IMG_0441.jpg', import.meta.url).href },
 ];
 
 function move() {
@@ -54,20 +30,40 @@ function move() {
   }, 20);
 }
 
-
 onMounted(() => {
   move();
 
+  // 暫停自動滑動
   box.value.onmouseenter = () => {
     clearInterval(timer);
   };
   box.value.onmouseleave = () => {
     move();
   };
+
+  // 移動設備上支援手動滑動
+  let startX = 0;
+  let scrollLeft = 0;
+
+  box.value.addEventListener('touchstart', (e) => {
+    clearInterval(timer);
+    startX = e.touches[0].pageX - box.value.offsetLeft;
+    scrollLeft = box.value.scrollLeft;
+  });
+
+  box.value.addEventListener('touchmove', (e) => {
+    const x = e.touches[0].pageX - box.value.offsetLeft;
+    const walk = x - startX;
+    box.value.scrollLeft = scrollLeft - walk;
+  });
+
+  box.value.addEventListener('touchend', () => {
+    move(); // 恢復自動滑動
+  });
 });
 
 onBeforeUnmount(() => {
-  clearInterval(timer); // 确保在组件卸载时清除定时器
+  clearInterval(timer); // 確保在元件卸載時清除定時器
 });
 
 const current = ref(null);
@@ -81,7 +77,7 @@ function showName(image){
     <div v-if="current">
         <h1>Activity {{current.name}}</h1>
     </div>
-    <div v-else  class="aos">
+    <div v-else class="aos">
         <h1>Active</h1>
     </div>
     <div class="box aos" ref="box">
@@ -112,7 +108,8 @@ function showName(image){
   position: relative;
   height: 300px;
   border: 1px solid #000000;
-  overflow: hidden;
+  overflow-x: scroll; /* 允許手動水平滑動 */
+  scroll-behavior: smooth; /* 平滑滑動 */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -134,16 +131,16 @@ function showName(image){
   display: flex;
   justify-content: center;
   align-items: center;
-  transition: transform 0.5s ease; /* 設定動畫效果 */
+  transition: transform 0.5s ease;
 }
 
-img:hover{
-        transform: scale(1.4) ;
-    }
+img:hover {
+  transform: scale(1.4);
+}
 
-    @media (max-width: 768px) {
-      img:hover{
-        transform: scale(1.2) ;
-    }
-    }
+@media (max-width: 768px) {
+  img:hover {
+    transform: scale(1.2);
+  }
+}
 </style>

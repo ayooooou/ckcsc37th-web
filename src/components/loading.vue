@@ -1,5 +1,5 @@
 <script setup>
-const logoUrl = new URL('../assets/club/club-2.jpg', import.meta.url).href;
+const logoUrl = new URL('../assets/loading/logo.png', import.meta.url).href;
 window.addEventListener("load", (event) => {
   const allBodyElements = document.body.querySelectorAll("*");
   const loading_img = document.getElementById("loading_img");
